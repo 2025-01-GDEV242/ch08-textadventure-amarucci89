@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-/**
- * This class is part of the "World of Zuul" application. 
+/** Lab 6 - Super Text Adventure
+ *  This class is part of the "World of Zuul" application. 
  * "World of Zuul" is a very simple, text based adventure game.  
  * 
  * This parser reads user input and tries to interpret it as an "Adventure"
@@ -13,8 +13,8 @@ import java.util.Scanner;
  * the known commands, and if the input is not one of the known commands, it
  * returns a command object that is marked as an unknown command.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Alessandro Marucci
+ * @version 2025.03.24
  */
 public class Parser 
 {

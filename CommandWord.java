@@ -1,9 +1,9 @@
-/**
+/** Lab 6 - Super Text Adventure
  * Representations for all the valid command words for the game
  * along with a string in a particular language.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Alessandro Marucci
+ * @version 2025.03.24
  */
 public enum CommandWord
 {
