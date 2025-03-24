@@ -45,6 +45,7 @@ public class Command
     }
 
     /**
+     * Return the command word (the second word) of the command.
      * @return The second word of this command. Returns null if there was no
      * second word.
      */
@@ -54,6 +55,7 @@ public class Command
     }
 
     /**
+     * Return true is command was not understood.
      * @return true if this command was not understood.
      */
     public boolean isUnknown()
@@ -62,6 +64,7 @@ public class Command
     }
 
     /**
+     * Return true if the command has a second word.
      * @return true if the command has a second word.
      */
     public boolean hasSecondWord()

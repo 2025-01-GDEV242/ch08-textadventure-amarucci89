@@ -24,6 +24,7 @@ public enum CommandWord
     }
     
     /**
+     * Return the command word as a string.
      * @return The command word as a string.
      */
     public String toString()

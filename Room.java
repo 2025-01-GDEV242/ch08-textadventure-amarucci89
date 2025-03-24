@@ -44,6 +44,7 @@ public class Room
     }
 
     /**
+     * Returns the short description of the room.
      * @return The short description of the room
      * (the one that was defined in the constructor).
      */
