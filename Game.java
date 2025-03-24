@@ -141,6 +141,7 @@ public class Game
     /** 
      * Try to go in one direction. If there is an exit, enter the new
      * room, otherwise print an error message.
+     * @param command The command for which direction to go.
      */
     private void goRoom(Command command) 
     {
