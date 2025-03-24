@@ -1,4 +1,4 @@
-/**
+/** Lab 6 - Super Text Adventure
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
  *  can walk around some scenery. That's all. It should really be extended 
@@ -11,8 +11,8 @@
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Alessandro Marucci
+ * @version 2025.03.24
  */
 
 public class Game 
@@ -34,7 +34,7 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room outside, theater, pub, lab, office, library, gym, cafe;
       
         // create the rooms
         outside = new Room("outside the main entrance of the university");
@@ -42,6 +42,9 @@ public class Game
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
+        library = new Room("in the school library");
+        gym = new Room("in the athletic department gym");
+        cafe = new Room("in the cafeteria");
         
         // initialise room exits
         outside.setExit("east", theater);
@@ -118,6 +121,14 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+                
+            case LOOK:
+                look();
+                break;
+                
+            case BACK:
+                goBack(command);
+                break;
         }
         return wantToQuit;
     }
@@ -141,6 +152,7 @@ public class Game
     /** 
      * Try to go in one direction. If there is an exit, enter the new
      * room, otherwise print an error message.
+     * @param command The command for which direction to go.
      */
     private void goRoom(Command command) 
     {
@@ -177,6 +189,40 @@ public class Game
         }
         else {
             return true;  // signal that we want to quit
+        }
+    }
+    
+    /**
+     * Look nearby your current location.
+     */
+    private void look()
+    {
+       System.out.println(currentRoom.getLongDescription());
+    }
+    
+    /** 
+     * Try to go back to previous room. If you are outside, do nothing.
+     * @param command The command for which direction to go.
+     */
+    private void goBack(Command command) 
+    {
+        if(!command.hasSecondWord()) {
+            // if there is no second word, we don't know where to go...
+            System.out.println("Go where?");
+            return;
+        }
+
+        String direction = command.getSecondWord();
+
+        // Try to leave current room.
+        Room nextRoom = currentRoom.getExit(direction);
+
+        if (nextRoom == null) {
+            System.out.println("You haven't visited any previous rooms!");
+        }
+        else {
+            currentRoom = nextRoom;
+            System.out.println(currentRoom.getLongDescription());
         }
     }
 }
