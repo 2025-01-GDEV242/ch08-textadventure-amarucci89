@@ -121,6 +121,14 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+                
+            case LOOK:
+                look();
+                break;
+                
+            case BACK:
+                goBack(command);
+                break;
         }
         return wantToQuit;
     }
@@ -181,6 +189,40 @@ public class Game
         }
         else {
             return true;  // signal that we want to quit
+        }
+    }
+    
+    /**
+     * Look nearby your current location.
+     */
+    private void look()
+    {
+       System.out.println(currentRoom.getLongDescription());
+    }
+    
+    /** 
+     * Try to go back to previous room. If you are outside, do nothing.
+     * @param command The command for which direction to go.
+     */
+    private void goBack(Command command) 
+    {
+        if(!command.hasSecondWord()) {
+            // if there is no second word, we don't know where to go...
+            System.out.println("Go where?");
+            return;
+        }
+
+        String direction = command.getSecondWord();
+
+        // Try to leave current room.
+        Room nextRoom = currentRoom.getExit(direction);
+
+        if (nextRoom == null) {
+            System.out.println("You haven't visited any previous rooms!");
+        }
+        else {
+            currentRoom = nextRoom;
+            System.out.println(currentRoom.getLongDescription());
         }
     }
 }
