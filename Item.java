@@ -16,19 +16,25 @@ public class Item
      */
     public Item(String description, double weight)
     {
-        this.desciption = description;
+        this.description = description;
         this.weight = weight;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Return the item's weight.
+     * @return The weight
      */
-    public int sampleMethod(int y)
+    public double getWeight()
     {
-        // put your code here
-        return x + y;
+        return weight;
+    }
+    
+    /**
+     * Return the item's description.
+     * @return The description
+     */
+    public String getDescription()
+    {
+        return description;
     }
 }
