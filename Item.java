@@ -8,16 +8,16 @@
  */
 public class Item
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private String description; // A description of the item.
+    private double weight; // The weight of the item.
 
     /**
-     * Constructor for objects of class Item
+     * Create a new item with the given description and weight.
      */
-    public Item()
+    public Item(String description, double weight)
     {
-        // initialise instance variables
-        x = 0;
+        this.desciption = description;
+        this.weight = weight;
     }
 
     /**
