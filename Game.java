@@ -19,6 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Room previousRoom;
         
     /**
      * Create the game and initialise its internal map.
@@ -47,8 +48,8 @@ public class Game
         cafe = new Room("in the cafeteria");
         
         // put items in the room
-        outside.addItem(new Item("bench", 45.2));
-        theater.addItem(new Item("piano", 947.1));
+        outside.addItem(new Item("wooden bench", 45.2));
+        theater.addItem(new Item("broken piano", 947.1));
         pub.addItem(new Item("beer", 0.5));
         lab.addItem(new Item("strange organism", 22.4));
         office.addItem(new Item("documents", 3.4));
@@ -56,18 +57,14 @@ public class Game
         gym.addItem(new Item("rusty barbell", 35.0));
         cafe.addItem(new Item("fine pastry", 0.2));
         
-        // initialise room exits
+        // initialize room exits
         outside.setExit("east", theater);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
-
         theater.setExit("west", outside);
-
         pub.setExit("east", outside);
-
         lab.setExit("north", outside);
         lab.setExit("east", office);
-
         office.setExit("west", lab);
 
         currentRoom = outside;  // start game outside
