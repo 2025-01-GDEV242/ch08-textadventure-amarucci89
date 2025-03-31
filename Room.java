@@ -106,5 +106,13 @@ public class Room
     {
         return exits.get(direction);
     }
+    
+    /**
+     * Creates an item to add to the room.
+     */
+    public void addItem(Item item)
+    {
+        items.add(item);
+    }
 }
 
