@@ -46,6 +46,16 @@ public class Game
         gym = new Room("in the athletic department gym");
         cafe = new Room("in the cafeteria");
         
+        // put items in the room
+        outside.addItem(new Item("bench", 45.2));
+        theater.addItem(new Item("piano", 947.1));
+        pub.addItem(new Item("beer", 0.5));
+        lab.addItem(new Item("strange organism", 22.4));
+        office.addItem(new Item("documents", 3.4));
+        library.addItem(new Item("old book", 5.7));
+        gym.addItem(new Item("rusty barbell", 35.0));
+        cafe.addItem(new Item("fine pastry", 0.2));
+        
         // initialise room exits
         outside.setExit("east", theater);
         outside.setExit("south", lab);
