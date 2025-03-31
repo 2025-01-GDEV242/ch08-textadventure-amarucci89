@@ -155,7 +155,7 @@ public class Game
         System.out.println("Your command words are:");
         parser.showCommands();
     }
-
+    
     /** 
      * Try to go in one direction. If there is an exit, enter the new
      * room, otherwise print an error message.
@@ -182,7 +182,16 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
-
+    
+    /**
+     * Enters the specified room and prints the description.
+     */
+    private void enterRoom(Room nextRoom)
+    {
+        currentRoom = nextRoom;
+        System.out.println(currentRoom.getLongDescription());
+    }
+    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
