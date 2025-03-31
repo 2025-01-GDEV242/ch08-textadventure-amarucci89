@@ -68,6 +68,20 @@ public class Room
     }
 
     /**
+     * Return a string description for items in the room.
+     */
+    private String getItemString()
+    {
+        String returnString = "Items:";
+        for(Iterator<Item> iter = items.iterator(); iter.hasNext();) 
+        {
+            returnString += " " + iter.next().getDescription();
+        }
+        
+        return returnString;
+    }
+    
+    /**
      * Return a string describing the room's exits, for example
      * "Exits: north west".
      * @return Details of the room's exits.
