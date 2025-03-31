@@ -192,25 +192,6 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
     
-    /**
-     * Go back to previous room.
-     */
-    private void goBack(Command command)
-    {
-        if (command.hasSecondWord())
-        {
-            System.out.println("Back where?");
-        }
-        if (previousRoom == null)
-        {
-            System.out.println("You cannot go back.");
-        }
-        else
-        {
-            enterRoom(previousRoom);
-        }
-    }
-    
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
