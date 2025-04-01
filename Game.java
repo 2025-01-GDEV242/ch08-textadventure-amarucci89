@@ -20,22 +20,24 @@ import java.util.Stack;
 public class Game 
 {
     private Parser parser;
-    private Stack<Room> roomHistory;
+    private Player player;
         
     /**
      * Create the game and initialise its internal map.
      */
     public Game() 
     {
-        createRooms();
+        player = new Player("Alex");
+        Room startRoom = createRooms();
+        player.enterRoom(startRoom);
         parser = new Parser();
-        roomHistory = new Stack<>();
     }
 
     /**
      * Create all the rooms and link their exits together.
+     * @return Returns the starting room.
      */
-    private void createRooms()
+    private Room createRooms()
     {
         Room outside, theater, pub, lab, office, library, gym, cafe;
       
@@ -69,7 +71,7 @@ public class Game
         lab.setExit("east", office);
         office.setExit("west", lab);
 
-        currentRoom = outside;  // start game outside
+        return outside;
     }
 
     /**
@@ -174,14 +176,14 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        Room nextRoom = currentRoom.getExit(direction);
+        Room nextRoom = player.getCurrentRoom().getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
         else {
-            roomHistory.push(currentRoom);
-            enterRoom(nextRoom);
+            player.enterRoom(nextRoom);
+            System.out.println(player.getCurrentRoom().getLongDescription());
         }
     }
     

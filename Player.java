@@ -17,4 +17,25 @@ public class Player
     {
         this.name = name;
     }
+    
+    /**
+     * Enter the given room.
+     */
+    public void enterRoom(Room room)
+    {
+        currentRoom = room;
+    }
+    
+    /**
+     * Gets the player's current room.
+     */
+    public Room getCurrentRoom()
+    {
+        return currentRoom;
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
 }
