@@ -181,8 +181,8 @@ public class Game
             System.out.println("There is no door!");
         }
         else {
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+            roomHistory.push(currentRoom);
+            enterRoom(nextRoom);
         }
     }
     
