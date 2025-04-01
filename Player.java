@@ -68,4 +68,23 @@ public class Player
         returnString += "\n" + getItemString();
         return returnString;
     }
+    
+    /**
+     * Picks up the item from the current room.
+     * @param itemName The item to be picked up.
+     * @return If successful, this method will return the item that was picked up.
+     */
+    public Item pickUpItem(String itemName)
+    {
+        if(canPickUpItem(itemName))
+        {
+            Item item = currentRoom.removeItem(itemName);
+            items.put(itemName, item);
+            return item;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
