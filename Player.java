@@ -7,15 +7,19 @@
  */
 public class Player
 {
-    private String name;
-    private Room currentRoom;
+    private String name; // The player's name.
+    private Room currentRoom; // The room the player is in.
+    private Items items = new Items(); // The items the player is holding.
+    private double maxWeight; // The maximum weight the player can hold.
 
     /**
      * Constructor for objects of class Player
+     * @param name The player's name
      */
     public Player(String name)
     {
         this.name = name;
+        this.maxWeight = 10;
     }
     
     /**
