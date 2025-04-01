@@ -8,6 +8,7 @@
  */
 public class Item
 {
+    private String name; // The name of the item.
     private String description; // A description of the item.
     private double weight; // The weight of the item.
 
