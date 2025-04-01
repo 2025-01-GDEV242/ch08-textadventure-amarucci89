@@ -57,4 +57,15 @@ public class Player
     {
         return "Your inventory currently holds: " + items.getLongDescription();
     }
+    
+    /**
+     * Gets a string containing the player's current location and items held.
+     * @return A description of the room and items held.
+     */
+    public String getLongDescription()
+    {
+        String returnString = currentRoom.getLongDescription();
+        returnString += "\n" + getItemString();
+        return returnString;
+    }
 }
