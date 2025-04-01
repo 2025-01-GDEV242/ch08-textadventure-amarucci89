@@ -102,7 +102,7 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(player.getLongDescription());
     }
 
     /**
@@ -140,6 +140,10 @@ public class Game
             case BACK:
                 goBack(command);
                 break;
+                
+            case TAKE:
+                take(command);
+    
         }
         return wantToQuit;
     }
@@ -232,5 +236,31 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+    
+    /**
+     * Try to take an item from the current room. If the item is there,
+     * pick it up. Otherwise, print an error message.
+     */
+    private void take(Command command)
+    {
+        if(!command.hasSecondWord()) 
+        {
+            // if there is no second word, we don't know where to go...
+            System.out.println("What do you want to take?");
+            return;
+        }
+
+        String itemName = command.getSecondWord();
+        Item item = player.pickUpItem(itemName);
+
+        if (item == null) 
+        {
+            System.out.println("Can't pick up " + itemName);
+        }
+        else 
+        {
+            System.out.println("Picked up " + item.getDescription());
+        } 
     }
 }
