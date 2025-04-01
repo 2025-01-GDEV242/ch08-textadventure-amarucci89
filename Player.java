@@ -24,6 +24,7 @@ public class Player
     
     /**
      * Enter the given room.
+     * @param room The room entered.
      */
     public void enterRoom(Room room)
     {
@@ -32,14 +33,28 @@ public class Player
     
     /**
      * Gets the player's current room.
+     * @return The current room.
      */
     public Room getCurrentRoom()
     {
         return currentRoom;
     }
     
+    /**
+     * Get the name of the player.
+     * @return The player's name.
+     */
     public String getName()
     {
         return name;
+    }
+    
+    /**
+     * Gets a string of all items the player is holding.
+     * @return A decription of the items held.
+     */
+    public String getItemString()
+    {
+        return "Your inventory currently holds: " + items.getLongDescription();
     }
 }
