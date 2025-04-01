@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /** Lab 6 - Super Text Adventure
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -19,7 +21,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private Room previousRoom;
+    private Stack<Room> roomHistory;
         
     /**
      * Create the game and initialise its internal map.
@@ -28,6 +30,7 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        roomHistory = new Stack<>();
     }
 
     /**
@@ -222,23 +225,20 @@ public class Game
      */
     private void goBack(Command command) 
     {
-        if(!command.hasSecondWord()) {
+        if(command.hasSecondWord()) 
+        {
             // if there is no second word, we don't know where to go...
-            System.out.println("Go where?");
+            System.out.println("Back where?");
             return;
         }
-
-        String direction = command.getSecondWord();
-
-        // Try to leave current room.
-        Room nextRoom = currentRoom.getExit(direction);
-
-        if (nextRoom == null) {
-            System.out.println("You haven't visited any previous rooms!");
+        if (roomHistory == null)
+        {
+            System.out.println("You can't go back!");
         }
-        else {
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+        else 
+        {
+            Room previousRoom = roomHistory.pop();
+            enterRoom(previousRoom);
         }
     }
 }
