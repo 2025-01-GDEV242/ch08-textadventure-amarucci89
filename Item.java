@@ -26,6 +26,15 @@ public class Item
     }
 
     /**
+     * Return the item's name.
+     * @return The name
+     */
+    public String getName()
+    {
+        return name;
+    }
+    
+    /**
      * Return the item's weight.
      * @return The weight
      */
