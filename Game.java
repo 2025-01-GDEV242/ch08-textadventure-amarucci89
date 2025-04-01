@@ -20,7 +20,6 @@ import java.util.Stack;
 public class Game 
 {
     private Parser parser;
-    private Room currentRoom;
     private Stack<Room> roomHistory;
         
     /**
