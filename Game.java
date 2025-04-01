@@ -195,22 +195,6 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
     
-    /** 
-     * "Quit" was entered. Check the rest of the command to see
-     * whether we really quit the game.
-     * @return true, if this command quits the game, false otherwise.
-     */
-    private boolean quit(Command command) 
-    {
-        if(command.hasSecondWord()) {
-            System.out.println("Quit what?");
-            return false;
-        }
-        else {
-            return true;  // signal that we want to quit
-        }
-    }
-    
     /**
      * Look nearby your current location.
      */
@@ -231,7 +215,7 @@ public class Game
             System.out.println("Back where?");
             return;
         }
-        if (roomHistory == null)
+        if (roomHistory.isEmpty())
         {
             System.out.println("You can't go back!");
         }
@@ -239,6 +223,22 @@ public class Game
         {
             Room previousRoom = roomHistory.pop();
             enterRoom(previousRoom);
+        }
+    }
+    
+    /** 
+     * "Quit" was entered. Check the rest of the command to see
+     * whether we really quit the game.
+     * @return true, if this command quits the game, false otherwise.
+     */
+    private boolean quit(Command command) 
+    {
+        if(command.hasSecondWord()) {
+            System.out.println("Quit what?");
+            return false;
+        }
+        else {
+            return true;  // signal that we want to quit
         }
     }
 }
