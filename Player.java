@@ -87,4 +87,14 @@ public class Player
             return null;
         }
     }
+    
+    /**
+     * Drops item in the current room.
+     * @param itemName The item to be dropped.
+     * @return If successful, this method will return the item that was dropped.
+     */
+    public Item dropItem(String itemName)
+    {
+        
+    }
 }
