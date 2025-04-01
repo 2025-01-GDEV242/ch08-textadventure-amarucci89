@@ -188,15 +188,6 @@ public class Game
     }
     
     /**
-     * Enters the specified room and prints the description.
-     */
-    private void enterRoom(Room nextRoom)
-    {
-        currentRoom = nextRoom;
-        System.out.println(currentRoom.getLongDescription());
-    }
-    
-    /**
      * Look nearby your current location.
      */
     private void look()
