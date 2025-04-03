@@ -1,0 +1,6 @@
+1. Add items
+2. Items have description and weight
+3. Rooms can hold multiple items
+4. Player can repeatedly go back to previous rooms
+5. Includes a Player class
+6. Player can pick up multiple items

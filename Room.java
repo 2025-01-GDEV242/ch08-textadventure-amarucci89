@@ -1,26 +1,28 @@
 import java.util.Set;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 
-/**
- * Class Room - a room in an adventure game.
+/** Lab 6 - Super Text Adventure
+ *  Class Room - a room in an adventure game.
  *
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
+ *  This class is part of the "World of Zuul" application. 
+ *  "World of Zuul" is a very simple, text based adventure game.  
  *
- * A "Room" represents one location in the scenery of the game.  It is 
- * connected to other rooms via exits.  For each existing exit, the room 
- * stores a reference to the neighboring room.
+ *  A "Room" represents one location in the scenery of the game.  It is 
+ *  connected to other rooms via exits.  For each existing exit, the room 
+ *  stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ *  @author  Alessandro Marucci
+ *  @version 2025.03.24
  */
 
 public class Room 
 {
     private String description;
-    private HashMap<String, Room> exits;        // stores exits of this room.
-
+    private HashMap<String, Room> exits; // Stores exits of this room.
+    private HashSet<Item> items; // Stores items in this room.
+    
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -31,6 +33,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        items = new HashSet<>();
     }
 
     /**
@@ -44,6 +47,7 @@ public class Room
     }
 
     /**
+     * Returns the short description of the room.
      * @return The short description of the room
      * (the one that was defined in the constructor).
      */
@@ -63,6 +67,20 @@ public class Room
         return "You are " + description + ".\n" + getExitString();
     }
 
+    /**
+     * Return a string description for items in the room.
+     */
+    private String getItemString()
+    {
+        String returnString = "Items:";
+        for(Iterator<Item> iter = items.iterator(); iter.hasNext();) 
+        {
+            returnString += " " + iter.next().getDescription();
+        }
+        
+        return returnString;
+    }
+    
     /**
      * Return a string describing the room's exits, for example
      * "Exits: north west".
@@ -87,6 +105,14 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+    
+    /**
+     * Creates an item to add to the room.
+     */
+    public void addItem(Item item)
+    {
+        items.add(item);
     }
 }
 
